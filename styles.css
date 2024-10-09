@@ -1,0 +1,73 @@
+.caja{
+    width: 200px;
+    height: 200px;
+    border: 5px, solid black;
+    background: aqua;
+    box-sizing: border-box;
+}
+
+div{
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    /*position: absolute; ahora podemos darles coordenadas que haran que salga de la caja
+    top: 0;
+    right: 0;
+    si usamos posicion relative en ".caja" el div se posicionara dentro de la caja y no en el documento ya que tiene un referente */
+    /* para poder centra un solo elemento
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    
+    position: fixed; se posiciona en la pantalla, se queda fijo ignorando el scroll y los elementos padres(tengan o no position:relative)
+    position: sticky: se posiciona fijo en el elemento que tenga position relative y hace lo mismo que fixed hasta que desaparezca usando el scroll 
+    */
+}
+/* z-index: 3; se usa para ordnar elementos uno por encima de otro entre mas grande sea el valor se posicionara por encima del que tenga menor valor iempre y cundo todos div tenga position relative*/
+body{
+    background: lightblue;
+    margin: 0;
+}
+
+.parent{
+    border: 1px solid black;
+    width: 500px;
+    height: 500px;
+    display: flex;/*se utiliza en el elemeto padre, para modificar el comportamiento de los hijos*/
+    flex-direction: row; /*direccion en fila(por defecto), column: en columna*/
+    /*direction: rtl; de derecha a izquierda*/
+    flex-wrap: nowrap;/* si el padre es de menor tamaño que el total de los hijos, Los hijos se ajustaran al tamaño del padre, evitando el desbordamiento y un nuevo salto de linea*/
+    justify-content: center;
+    /*space-around; es como si los elementos tuvieran un padding(ej:5px) solo por los lados
+    space-between; deja un espacio entre ellos sin separarse de los bordes
+    space-evenly; deja el mismo espacio entre los elementos incluido el borde*/
+
+    /*
+    align-items: center; alinea los elmentos sin importar el tamaño
+    align-content: center; alinea todo el contenido
+    gap: 5px; deja espacio entre los elementos sin contar el borde*/
+}
+
+.item{
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    border: 1px solid black;
+    
+    /*valores por defecto
+    flex-grow: 0; evita que los elementos crecan
+    flex-shrink: 1; los elementos pueden reducir su tamaño a uno menor que flex-basis
+    flex-basis: auto; los elementos tiene un tamaño base auto,/ 0; los elementos tienen el mismo ancho
+    
+    se puede resumir: flex: 1;*/
+}
+
+.item:first-child{
+    background-color: yellow;
+    /*flex: 2; le estamos diciendo que ocupe el doble del su espacio/tamaño disponible y que sus hermanos se ajusten*/
+}
+
+.item:last-child{
+    background-color: green;
+    align-self: flex-end; 
+}
